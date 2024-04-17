@@ -18,9 +18,16 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    #hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, ... }: 
+  outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -44,8 +51,9 @@
           #homeDirectory = "/home/lowlife";
           modules = [
             ./home_manager
-            nixvim.homeManagerModules.nixvim          
+            #nixvim.homeManagerModules.nixvim          
           ];
+          extraSpecialArgs = {inherit inputs;};
         };
       };
     };
