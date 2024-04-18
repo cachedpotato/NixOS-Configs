@@ -45,6 +45,8 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    alacritty
+    kitty
   ];
 
   programs.git = {

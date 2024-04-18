@@ -7,10 +7,10 @@
     settings = {
       #leader key settings
       "$mod" = "SUPER";
-      bind = [
-        "$mod, F, exec, firefox"
-        ", Print, exec, grimblast copy area"
-      ];
+      #bind = [
+      #  "$mod, F, exec, firefox"
+      #  ", Print, exec, grimblast copy area"
+      #];
       #++ (
       #  #workspaces
       #  #binds $mod + shift + 1:10 to move to workspace 1:10
@@ -33,7 +33,7 @@
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
-        "$mod ALT, mouse:272, resizewindow"
+        "$mod SHIFT, mouse:272, resizewindow"
       ];
     };
   };

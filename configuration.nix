@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -57,6 +57,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  #services.xserver.displayManager.sddm.enable = true;
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -102,6 +103,13 @@
     ];
   };
 
+  #Enable Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -116,6 +124,7 @@
     lf
     git
     curl
+    #kitty
   ];
   
   #set vim as default editor
