@@ -19,6 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #base16 color scheme for theming
+    nix-colors.url = "github:misterio77/nix-colors";
+
+    
     #hyprland
     #hyprland.url = "github:hyprwm/Hyprland";
     #hyprland-plugins = {
@@ -27,7 +31,7 @@
     #};
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nix-colors, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -53,7 +57,7 @@
             ./home_manager
             #nixvim.homeManagerModules.nixvim          
           ];
-          extraSpecialArgs = {inherit inputs;};
+          extraSpecialArgs = {inherit inputs nix-colors;};
         };
       };
     };

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -10,6 +10,7 @@
     ./nixvim.nix
     ./sh.nix
     ./hyprland.nix
+    #nix-colors.homeManagerModules.default
   ];
   # This value determines the Home Manager release that your configuration
   # compatible with. This helps avoid breakage when a new Home Manager release

@@ -1,5 +1,13 @@
-{config, pkgs, lib, ...}:
+{config, pkgs, lib, nix-colors,...}:
 {
+
+  #base  16 colorschemes with nix-color
+  imports = [
+    nix-colors.homeManagerModules.default
+  ];
+
+  colorScheme = nix-colors.colorSchemes.dracula;
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
@@ -8,14 +16,13 @@
       #leader key settings
       "$mod" = "SUPER";
 
-      general = with config.colorScheme.colors; {
+      general = {
         gaps_in = 5; #default
         gaps_out = 5; #default 20
 
-        #border colors with matching base16 colors? idk
-        "col.active_border" = "rgba(${base0E}ff) rgba(${base09}ff) 60deg";
-        "col.inactive_border" = "rgba(${base00}ff)"
-        
+        #colors using nix-colors
+        "col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.palette.base00}ff) 60deg";
+        "col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ff)";
       };
 
       #keyboard layout
@@ -46,9 +53,9 @@
 
       decoration = {
         rounding = 5;
-        active_opacity = "0.3";
-        inactive_opacity = "0.3";
-        fullscreen_opacity = "0.3";
+        active_opacity = "0.7";
+        inactive_opacity = "0.7";
+        fullscreen_opacity = "0.7";
         drop_shadow = true; #what is this idek
 
         #blur subcategory
