@@ -53,17 +53,17 @@
         "$mod SHIFT, K, movewindow, u"
         "$mod SHIFT, L, movewindow, r"
 
-        "$mod, 1, exec, hyprworkspace 1"
-        "$mod, 2, exec, hyprworkspace 2"
-        "$mod, 3, exec, hyprworkspace 3"
-        "$mod, 4, exec, hyprworkspace 4"
-        "$mod, 5, exec, hyprworkspace 5"
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod, 4, workspace, 4"
+        "$mod, 5, workspace, 5"
 
-        "$mod SHIFT, 1, exec, movetoworkspace, 1"
-        "$mod SHIFT, 2, exec, movetoworkspace, 2"
-        "$mod SHIFT, 3, exec, movetoworkspace, 3"
-        "$mod SHIFT, 4, exec, movetoworkspace, 4"
-        "$mod SHIFT, 5, exec, movetoworkspace, 5"
+        "$mod SHIFT, 1, movetoworkspace, 1"
+        "$mod SHIFT, 2, movetoworkspace, 2"
+        "$mod SHIFT, 3, movetoworkspace, 3"
+        "$mod SHIFT, 4, movetoworkspace, 4"
+        "$mod SHIFT, 5, movetoworkspace, 5"
 
         #brightness & sound settings
         ", XF86MonBrightnessDown, exec, brightnessctl set 10-%"
