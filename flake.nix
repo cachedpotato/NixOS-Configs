@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "a low-grade flake by cachedpotato";
 
   inputs = {
 
@@ -20,8 +20,11 @@
     };
 
     #base16 color scheme for theming
-    nix-colors.url = "github:misterio77/nix-colors";
+    #nix-colors.url = "github:misterio77/nix-colors";
 
+    #stylix for more centralized color/theme management
+    #may change later
+    stylix.url = "github:danth/stylix";
     
     #hyprland
     #hyprland.url = "github:hyprwm/Hyprland";
@@ -31,7 +34,7 @@
     #};
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-colors, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -55,9 +58,10 @@
           #homeDirectory = "/home/lowlife";
           modules = [
             ./home_manager
+            stylix.homeManagerModules.stylix
             #nixvim.homeManagerModules.nixvim          
           ];
-          extraSpecialArgs = {inherit inputs nix-colors;};
+          extraSpecialArgs = {inherit inputs; };
         };
       };
     };

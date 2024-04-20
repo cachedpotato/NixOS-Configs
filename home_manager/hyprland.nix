@@ -1,4 +1,4 @@
-{config, pkgs, lib, nix-colors,...}:
+{config, pkgs, lib, ...}
 {
 
   #base  16 colorschemes with nix-color
@@ -22,8 +22,8 @@
         border_size = 2; #default 1
 
         #colors using nix-colors
-        "col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.palette.base00}ff) 60deg";
-        "col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ff)";
+        #"col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.palette.base00}ff) 60deg";
+        #"col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ff)";
       };
 
       #keyboard layout
@@ -87,9 +87,10 @@
 
       decoration = {
         rounding = 5;
-        active_opacity = "0.7";
-        inactive_opacity = "0.7";
-        fullscreen_opacity = "0.7";
+        #opacity is better managed using stylix
+        #active_opacity = "0.7";
+        #inactive_opacity = "0.7";
+        #fullscreen_opacity = "0.7";
         drop_shadow = true; #what is this idek
 
         #blur subcategory
@@ -97,7 +98,7 @@
           enabled = true;
           size = 8; #default
           new_optimizations = "on";
-          noise = "0.0117";
+          noise = "0.02"; #default "0.0117";
           vibrancy = "0.1696"; #default
         };
       };
