@@ -27,11 +27,18 @@
       };
     };
 
+    opacity = {
+      terminal = 0.80;
+      applications = 0.90;
+      popups = 0.80;
+      desktop = 0.90;
+    };
+
     targets = {
       alacritty.enable = true;
       kitty.enable = true;
       firefox.enable = true;
-      hyprland.enable = false;
+      hyprland.enable = true;
       #rofi.enable = true;
       #swaylock.enable = true;
       nixvim = {
