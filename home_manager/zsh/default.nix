@@ -25,7 +25,7 @@
 
       extraConfig = ''
         #display red dots whilst waiting for completion
-        COMPLETION_WAITING_DOTS = "true"
+        COMPLETION_WAITING_DOTS="true"
       '';
     };
 

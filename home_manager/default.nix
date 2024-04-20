@@ -21,7 +21,6 @@
     fzf
     (pkgs.nerdfonts.override {fonts = [ "FiraCode" "DroidSansMono"]; })
     meslo-lgs-nf #for powerlevel10k
-    alacritty
     kitty
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -47,7 +46,7 @@
     enable = true;
 
     settings = {
-      env.TERM = "xterm-256color";
+      #env.TERM = "xterm-256color";
       font = {
         size = 12;
         #draw_bold_text_with_bright_colors = true;
