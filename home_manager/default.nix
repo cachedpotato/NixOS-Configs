@@ -46,11 +46,19 @@
     enable = true;
 
     settings = {
-      #env.TERM = "xterm-256color";
+      env.TERM = "xterm-256color";
       font = {
         size = 12;
         #draw_bold_text_with_bright_colors = true;
       };
+
+      cursor = {
+        style.shape = "block";
+        style.blinking = "on";
+        blink_interval = 750 #ms, default
+      };
+
+      #colors = {}
       selection.save_to_clipboard = true;
     };
   };
