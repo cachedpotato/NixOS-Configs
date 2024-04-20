@@ -2,7 +2,10 @@
 {
   stylix = {
     autoEnable = false;
-    image = ../wallpapers/hakurei_reimu_1.jpg;
+    image = pkgs.fetchurl {
+      url = "https://images3.alphacoders.com/112/1120150.jpg";
+      sha256 = "";
+    };
     base16Scheme = ../color_schemes/equilibrium-light.yaml;
     polarity = "light";
 
