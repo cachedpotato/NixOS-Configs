@@ -1,4 +1,4 @@
-{lib, pkgs, stylix, ...}:
+{config, lib, pkgs, stylix, ...}:
 {
   stylix = {
     autoEnable = false;

@@ -1,12 +1,12 @@
-{config, pkgs, lib, ...}
+{config, pkgs, lib, ...}:
 {
 
   #base  16 colorschemes with nix-color
-  imports = [
-    nix-colors.homeManagerModules.default
-  ];
+  #imports = [
+  #  nix-colors.homeManagerModules.default
+  #];
 
-  colorScheme = nix-colors.colorSchemes.dracula;
+  #colorScheme = nix-colors.colorSchemes.dracula;
 
   wayland.windowManager.hyprland = {
     enable = true;

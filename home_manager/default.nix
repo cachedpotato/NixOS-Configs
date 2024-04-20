@@ -65,7 +65,7 @@
       cursor = {
         style.shape = "block";
         style.blinking = "on";
-        blink_interval = 750 #ms, default
+        blink_interval = 750; #ms, default
       };
 
       #colors = {}
