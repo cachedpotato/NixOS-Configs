@@ -10,4 +10,5 @@
       nrs = "sudo nixos-rebuild switch";
       hms = "home-manager switch";
     };
-};
+  };
+}
