@@ -19,9 +19,16 @@
     neofetch
     ripgrep
     fzf
+    kitty
+
     (pkgs.nerdfonts.override {fonts = [ "FiraCode" "DroidSansMono"]; })
     meslo-lgs-nf #for powerlevel10k
-    kitty
+    #fonts for waybar
+    cantarell-fonts
+    font-awesome
+    #other cool fonts
+    jetbrains-mono
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
