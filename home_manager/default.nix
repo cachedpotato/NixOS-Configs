@@ -42,7 +42,10 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
+  programs.cava = {
+    enable = true;
+  };
+  
   programs.git = {
     enable = true;
     userName = "cachedpotato";
