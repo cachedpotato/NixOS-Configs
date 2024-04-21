@@ -38,7 +38,7 @@
 
         "cava" = {
           bars = 10;
-          framerate = 60;
+          framerate = 30;
           lower_cutoff_freq = 20;
           higher_cutoff_freq = 15000;
           hide_on_silence = false;

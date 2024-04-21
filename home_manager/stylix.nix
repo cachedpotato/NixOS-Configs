@@ -42,7 +42,7 @@
       #swaylock.enable = true;
       nixvim = {
         enable = true;
-        transparent_bg.main = true; #default false
+        transparent_bg.main = false; #default false
         transparent_bg.sign_column = false;
       };
       waybar = {

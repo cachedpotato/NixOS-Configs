@@ -39,7 +39,7 @@
 
       #Keybinds
       bind = [
-        "$mod, Q, exec, kitty"
+        "$mod, Q, exec, alacritty"
         "$mod, F, exec, firefox"
         "$mod, C, killactive"
         "$mod, Tab, cyclenext"
