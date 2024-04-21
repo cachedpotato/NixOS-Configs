@@ -28,7 +28,7 @@
         };
 
         "hyprland/window" = {
-          format = "{title}";
+          format = "{initialTitle}";
           separate-outputs = true;
         };
 
@@ -37,15 +37,21 @@
         };
 
         "cava" = {
-          bars = 10;
-          framerate = 30;
-          lower_cutoff_freq = 20;
-          higher_cutoff_freq = 15000;
+          bars = 12;
+          bar_delimiter = 0;
+          stereo = true;
+          framerate = 60;
+          sensitivity = 4.2;
+          #if you're setting sensitivity comment out autosens
+          #and vice versa
+          #autosens = 1;
+          input_delay = 2;
           hide_on_silence = false;
           #monstercat smoothing - change both monstercat
           #and waves to the same value
           monstercat = true;
           waves = true;
+          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
         };
 
         "clock" = {
@@ -63,6 +69,7 @@
             weeks-pos = "left";
             on-scroll = 1;
           };
+
           actions = {
             on-click = "tz_up";
             on-click-right = "mode";
@@ -77,12 +84,9 @@
           max-length = 25;
           #time till full/zero
           format-time = "{H} h {M} min";
-          #tooltip-format = "<tt><small>{format-time}</small></tt>";
+          #tooltip-format = "<tt><small>{timeTo}</small></tt>";
         };
-
-
-        
-        reload_style_on_change = true; #default false
+        reload_style_on_change = false; #default false
       };
     };
   };

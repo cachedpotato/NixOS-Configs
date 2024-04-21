@@ -46,6 +46,10 @@
   ];
   programs.cava = {
     enable = true;
+    settings = { 
+      output.data_format = "ascii";
+      output.ascii_max_range = 9;
+    };
   };
   
   programs.git = {

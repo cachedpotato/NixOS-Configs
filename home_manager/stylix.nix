@@ -27,8 +27,8 @@
     };
 
     opacity = {
-      terminal = 0.50;
-      applications = 0.50;
+      terminal = 0.80;
+      applications = 0.80;
       popups = 0.50;
       desktop = 0.50;
     };
@@ -37,13 +37,13 @@
       alacritty.enable = true;
       kitty.enable = true;
       firefox.enable = true;
-      hyprland.enable = true;
+      hyprland.enable = false;
       #rofi.enable = true;
       #swaylock.enable = true;
       nixvim = {
         enable = true;
-        transparent_bg.main = false; #default false
-        transparent_bg.sign_column = false;
+        transparent_bg.main = true; #default false
+        transparent_bg.sign_column = true;
       };
       waybar = {
         enable = true;
