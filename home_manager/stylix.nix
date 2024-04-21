@@ -2,25 +2,21 @@
 {
   stylix = {
     autoEnable = false;
-    image = pkgs.fetchurl {
-      url = "https://images3.alphacoders.com/112/1120150.jpg";
-      sha256 = "";
-    };
-    base16Scheme = ../color_schemes/equilibrium-light.yaml;
-    polarity = "light";
+    image = ../wallpapers/hakurei_reimu_1.jpg; 
+    #base16Scheme = ../themes/base16/equilibrium-light.yaml;
 
     fonts = {
       monospace = {
         package = pkgs.nerdfonts;
-        name = "FiraCode Nerd Font Mono"
+        name = "FiraCode Nerd Font Mono";
       };
       serif = {
         package = pkgs.nerdfonts;
-        name = "FiraCode Nerd Font Mono"
+        name = "FiraCode Nerd Font Mono";
       };
       sansSerif= {
         package = pkgs.nerdfonts;
-        name = "FiraCode Nerd Font Mono"
+        name = "FiraCode Nerd Font Mono";
       };
       sizes = {
         terminal = 12;
@@ -31,10 +27,10 @@
     };
 
     opacity = {
-      terminal = 0.80;
-      applications = 0.90;
-      popups = 0.80;
-      desktop = 0.90;
+      terminal = 0.50;
+      applications = 0.50;
+      popups = 0.50;
+      desktop = 0.50;
     };
 
     targets = {
@@ -50,7 +46,7 @@
         transparent_bg.sign_column = false;
       };
       waybar = {
-        enable = false;
+        enable = true;
         enableCenterBackColors = true;
         enableLeftBackColors = true;
         enableRightBackColors = true;

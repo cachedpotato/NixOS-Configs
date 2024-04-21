@@ -26,6 +26,8 @@
         #"col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ff)";
       };
 
+      exec-once = "waybar";
+
       #keyboard layout
       input = {
         kb_layout = "kr";

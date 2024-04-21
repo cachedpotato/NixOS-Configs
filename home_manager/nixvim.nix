@@ -7,12 +7,12 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
-    colorschemes = {
-      catppuccin = {
-        enable = true;
-        settings.flavour = "mocha";
-      };
-    };
+    #colorschemes = {
+    #  catppuccin = {
+    #    enable = true;
+    #    settings.flavour = "mocha";
+    #  };
+    #};
 
     opts = {
       number = true;

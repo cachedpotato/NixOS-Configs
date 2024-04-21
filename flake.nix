@@ -61,7 +61,10 @@
             stylix.homeManagerModules.stylix
             #nixvim.homeManagerModules.nixvim          
           ];
-          extraSpecialArgs = {inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs; 
+            inherit stylix; 
+          };
         };
       };
     };

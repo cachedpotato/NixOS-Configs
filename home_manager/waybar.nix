@@ -50,7 +50,7 @@
 
         "clock" = {
           interval = 60;
-          format = {:%H:%M};
+          format = "{:%H:%M}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           timezones = [
             "Asia/Seoul"
@@ -72,8 +72,8 @@
           };
         };
 
-        "battery" {
-          format = {capacity}%;
+        "battery" = {
+          format = "{capacity}%";
           max-length = 25;
           #time till full/zero
           format-time = "{H} h {M} min";

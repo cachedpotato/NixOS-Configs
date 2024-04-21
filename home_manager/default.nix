@@ -1,4 +1,4 @@
-{ config, pkgs, nix-colors, ... }:
+{ config, pkgs, stylix, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -11,6 +11,8 @@
     ./bash.nix
     ./hyprland.nix
     ./zsh
+    ./stylix.nix
+    ./waybar.nix
     #nix-colors.homeManagerModules.default
   ];
 
