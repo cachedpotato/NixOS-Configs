@@ -1,10 +1,10 @@
 {pkgs, ...}:
 {
-  home.packages = with pkgs {
+  home.packages = with pkgs; [
     hypridle
-  };
+  ];
 
-  home.file."./config/hypr/hypridle.conf".text = ''
+  home.file.".config/hypr/hypridle.conf".text = ''
     general {
       lock_cmd = pidof hyprlock || hyprlock       # avoid starting multiple hyprlock instances.
       before_sleep_cmd = loginctl lock-session    # lock before suspend.
@@ -40,4 +40,4 @@
       on-timeout = systemctl suspend                # suspend pc
     }
   '';
-};
+}

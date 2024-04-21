@@ -25,7 +25,11 @@
         #"col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ff)";
       };
 
-      exec-once = "waybar";
+      exec-once = [
+        "waybar"
+        "hypridle"
+        "hyprpaper"
+      ];
 
       #keyboard layout
       input = {

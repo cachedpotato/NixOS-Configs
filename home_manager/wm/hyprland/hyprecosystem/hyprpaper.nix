@@ -1,8 +1,8 @@
 {pkgs, ...}:
 {
-  home.packages = with pkgs {
+  home.packages = with pkgs; [
     hyprpaper
-  };
+  ];
 
   #hyprpapr conf should not have spaces in between ,
   home.file.".config/hypr/hyprpaper.conf".text = ''

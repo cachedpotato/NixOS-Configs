@@ -1,8 +1,8 @@
 {pkgs, config, lib, stylix, ...}:
 {
-  home.packages = with pkgs {
+  home.packages = with pkgs; [
     hyprlock
-  };
+  ];
 
   home.file.".config/hypr/hyprlock.conf".text = ''
     general {
