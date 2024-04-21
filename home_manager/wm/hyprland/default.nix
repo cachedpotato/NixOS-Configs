@@ -1,10 +1,9 @@
 {config, pkgs, lib, ...}:
 {
-
-  #base  16 colorschemes with nix-color
-  #imports = [
-  #  nix-colors.homeManagerModules.default
-  #];
+  imports = [
+    #  nix-colors.homeManagerModules.default
+    ./hyprecosystem 
+  ];
 
   #colorScheme = nix-colors.colorSchemes.dracula;
 
@@ -72,10 +71,8 @@
         ", XF86MonBrightnessUp, exec, brightnessctl set +10%"
 
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioLowerVolume, exec, vol --down"
-        ", XF86AudioRaiseVolume, exec, vol --up"
-
-
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
         
       ];
 

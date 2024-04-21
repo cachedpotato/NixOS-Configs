@@ -8,11 +8,13 @@
 
   imports =[
     ./nixvim.nix
-    ./bash.nix
-    ./hyprland.nix
-    ./zsh
+    ./wm
+    #./hyprland.nix
+    ./shell
+    #./zsh
+    #./bash.nix
     ./stylix.nix
-    ./waybar.nix
+    #./waybar.nix
     #nix-colors.homeManagerModules.default
   ];
 
