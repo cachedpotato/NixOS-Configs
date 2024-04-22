@@ -57,7 +57,7 @@
           #username = "lowlife";
           #homeDirectory = "/home/lowlife";
           modules = [
-            ./home_manager
+            ./home
             stylix.homeManagerModules.stylix
             #nixvim.homeManagerModules.nixvim          
           ];
