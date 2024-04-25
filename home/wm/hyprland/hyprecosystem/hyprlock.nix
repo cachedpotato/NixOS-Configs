@@ -1,7 +1,7 @@
-{pkgs, config, lib, stylix, ...}:
+{pkgs, config, lib, stylix, inputs, ...}:
 {
-  home.packages = with pkgs; [
-    hyprlock
+  imorts = [
+    inputs.hyprlock.homeManagerModules.default
   ];
 
   programs.hyprlock = {
@@ -40,7 +40,7 @@
       font_color = "rgb(20, 20, 20)"; #default
       fade_on_empty = true;
       fade_timeout = 2000; #default 2000, ms
-      fail_color = "rgb(" + base08-rgb-r + "," + base08-rgb-g + "," + base08-rgb-b + ")";
+      fail_color = with config.lib.stylix.colors; "rgb(" + base08-rgb-r + "," + base08-rgb-g + "," + base08-rgb-b + ")";
       fail_transition = 300; #default 300 ms
       position.x = 0;
       position.y = -20;

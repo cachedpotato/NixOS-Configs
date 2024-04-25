@@ -1,6 +1,10 @@
-{config, lib, pkgs, stylix, ...}:
+{config, lib, pkgs, inputs, ...}:
 {
-  stylix = {
+  imports = [
+    inputs.stylix.homeManagerModules.stylix
+  ];
+
+  programs.stylix = {
     autoEnable = false;
     image = ../wallpapers/hakurei_reimu_1.jpg; 
     base16Scheme = ../themes/base16/equilibrium-light.yaml;

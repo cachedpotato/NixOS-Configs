@@ -19,6 +19,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprlock = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprpaper = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #base16 color scheme for theming
     #nix-colors.url = "github:misterio77/nix-colors";
 
@@ -58,7 +71,7 @@
           #homeDirectory = "/home/lowlife";
           modules = [
             ./home
-            stylix.homeManagerModules.stylix
+            #stylix.homeManagerModules.stylix
             #nixvim.homeManagerModules.nixvim          
           ];
           extraSpecialArgs = {
