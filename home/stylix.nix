@@ -51,7 +51,7 @@
       };
 
       waybar = {
-        enable = false;
+        enable = true;
         enableCenterBackColors = true;
         enableLeftBackColors = true;
         enableRightBackColors = true;
