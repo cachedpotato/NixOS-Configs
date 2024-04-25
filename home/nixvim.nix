@@ -6,40 +6,59 @@
 
   programs.nixvim = {
     enable = true;
-    defaultEditor = true;
-    global.mapping = " "; #set leader key to space
-
+    clipboard = {
+      register = "unnamedplus";
+      providers = {
+        wl-copy.enable = true;
+        xclip.enable = true;
+      };
+    };
     plugins = {
-      airline = {
-        enable = true;
-        settings = {
-          powerline_fonts = false;
-          statusline_ontop = false;
-        };
-      };
+      lualine.enable = true;
 
-      autoclose = {
-        enable = true;
-        keys = {
-          "(" = {escape = false; close = true; pair = "()";};
-          "{" = {escape = false; close = true; pair = "{}";};
-          "[" = {escape = false; close = true; pair = "[]";};
-        };
-        options.autoIndent = true;
-      };
+      nvim-autopairs.enable = true;
 
-      indent-blankline = true;
+			indent-blankline = {
+				enable = true;
+				settings.indent.char = "";
+			};
 
-      lsp ={
+      lsp = {
         enable = true;
         servers = {
-          rust_analyzer.enable = true;
-          pylsp.enable = true;
-          gleam.enable = true;
-          gopls.enable = false;
-          ccls.enable = true;
-          nixd.enable = true;
-          yamlls.enable = true;
+          bashls.enable = true; #bash
+          ccls.enable = true; #c/c++
+          dockerls.enable = true; #Docker
+          gleam.enable = true; #gleam
+          marksman.enable = true; #markdown
+          nixd.enable = true; #nix
+          #pylsp.enable = true; 
+          #pylyzer.enable = true;
+          pyright.enable = true;
+          #ruff.enable = true;
+          #ruff-lsp.enable = true; #python
+          rust-analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+          };
+          yamlls.enable = true; #YAML
+        };
+        keymaps = {
+          silent = true;
+          diagnostic = {
+            "<leader>k" = "goto_prev";
+            "<leader>j" = "goto_next";
+          };
+
+          lspBuf = {
+            gd = "definition";
+            gD = "references";
+            gt = "type_definition";
+            gi = "implementation";
+            K = "hover";
+            "<F2>" = "rename";
+          };          
         };
       };
 
@@ -48,112 +67,178 @@
         autoEnableSources = true;
         settings = {
           sources = [
-            {name = "nvim_lsp"};
-            {name = "path"}; #cmd_path
-            {name = "buffer"}; #cmd_buffer
-            {name = "cmdline"}; #cmd_cmdline
-            {name = "luasnip"};
+            {name = "nvim_lsp";}
+            {name = "buffer";}
+            {name = "path";}
+            {name = "cmdline";}
+            {name = "cmp";}
+            {name = "luasnip";}
           ];
 
-          mapping = {
-            "<C-k>" = "cmp.mapping.select_prev_item()";
-            "<C-j>" = "cmp.mapping.select_next_item()";
-            "<C-b>" = "cmp.mapping.scroll_docs(-4)";
-            "<C-f>" = "cmp.mapping.scroll_docs(4)";
-            "<C-Space>" = "cmp.mapping.complete()";#show completion suggestions
-            "<C-e>" = "cmp.mapping.abort()";
-            "<CR>" = "cmp.mapping.confirm({select=true})";
-          };
+          snippet.expand = ''
+            function(args)
+              require('luasnip').lsp_expand(args.body)
+            end
+          '';
+
+          view.docs.auto_open = true;
+
+          window = {
+            documentation.border = [
+              "╭"
+              "─"
+              "╮"
+              "│"
+              "╯"
+              "─"
+              "╰"
+              "│"
+            ];
+            documentation.winhighlight = "Normal:NormalNC,FloatBorder:NormalNC,CursorLine:PmenuSel,Search:None";
+            documentation.max_height = "math.floor(40 * (40 / vim.o.lines))";
+            documentation.max_width = "math.floor((40 * 2) * (vim.o.columns / (40 * 2 * 16 / 9)))";
+            completion.border = [
+              "╭"
+              "─"
+              "╮"
+              "│"
+              "╯"
+              "─"
+              "╰"
+              "│"
+            ];
+            completion.winhighlight = "Normal:NormalNC,FloatBorder:NormalNC,CursorLine:PmenuSel,Search:None";
+
+            mapping = {
+              "<C-b>" = "cmp.mapping.scroll_docs(-4)";
+              "<C-f>" = "cmp.mapping.scroll_docs(4)";
+              "<C-Space>" = "cmp.mapping.complete()";
+              "<C-e>" = "cmp.mapping.abort()";
+              "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+              "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+              #__raw = ''
+              #  cmp.mapping.preset.insert({
+              #    ['<CR>'] = cmp.mapping({
+              #      i = function(fallback)
+              #        if cmp.visible() and cmp.get_active_entry() then
+              #          cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
+              #        else
+              #          fallback()
+              #        end
+              #      end,
+              #      s = cmp.mapping.confirm({select = true}),
+              #      c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true}),
+              #    }),
+              #  })
+              #'';
+            };
+          }; 
         };
       };
 
-      cmp_luasnip.enable = true;
-      cmp_buffer.enable = true;
-      cmp_path.enable = true;
-      cmp_cmdline.enable = true;
-      
-      #vscode like pictograms - integrate with cmp
-      lspkind = {
-        enable = true;
-        mode = "symbol"; #text, text_symbol, symbol_text also possible
-        cmp.enable = true;
-      };
-
-      luasnip.enable = true;
-
-      nix.enable = false;
-      rust-tools.enable = false;
-
-      telescope = {
-        enable = true;
-        extensions = {
-          fzf-native.enable = true;
-        };
-
-        keymaps = {
-          "<C-k>" = {
-            mode = "i";
-            action = "move_selection_previous";
-          };
-          "<C-j>" = {
-            mode = "i";
-            action = "move_selection_next";
-          };
-        };
-
-        keymapsSilent = false; #idk how this interacts with nixvim keybind options
-      };
+      friendly-snippets.enable = true;
+      lspkind.enable = true;
+      lspkind.cmp.enable = true; #icons
 
       treesitter = {
         enable = true;
+        indent = true;
         ensureInstalled = [
           "c"
           "cpp"
+          "dockerfile"
+          "bash"
           "gleam"
+          "markdown"
           "nix"
           "python"
           "rust"
           "yaml"
         ];
+        incrementalSelection.enable = true;
       };
+
+			telescope = {
+			  enable = true;
+				extensions.fzf-native.enable = true;
+				keymaps = {
+				  "<leader>tf" = {
+					  mode = "n";
+						action = "find_files";
+						options.desc = "[t]elescope [f]ind file";
+					};
+				  "<leader>tg" = {
+					  mode = "n";
+						action = "live_grep";
+						options.desc = "[t]elescope search [g]rep string";
+					};  
+				  "<leader>tr" = {
+					  mode = "n";
+						action = "oldfiles";
+						options.desc = "[t]elescope search through [r]ecents";
+					};
+
+				  "<leader>tc" = {
+					  mode = "n";
+						action = "grep_string";
+						options.desc = "[t]elescope search string under [c]ursor";
+					};
+					#"<C-k>" = {
+					#  mode = "i";
+					#	action = "move_selection_previous";
+					#};
+					#"<C-j>" = {
+					#  mode = "i";
+					#	action = "move_selection_next";
+					#};
+				};
+			};
+      
     };
 
     opts = {
+      #tabs
+      tabstop = 2;
+			expandtab = true;
+      shiftwidth = 2;
+
+      #indentations
+      autoindent = true;
+
+      #line number
       number = true;
       relativenumber = true;
-      shiftwidth = 2;
-      expandtab = true;
-      autoindent = true;
-      smartindent = true;
-      tabstop = 2;
-      nowrap = true;
+
+      #Misc
+			wrap = false;
+      guicursor = "a:block-CursorLineNr";
+      colorcolumn = "100";
       ignorecase = true;
       smartcase = true;
-      guicursor = "n-v-c-i:block"; #set cursor to block type at all times
-   
+      #mouse = "a";
     };
 
+    globals.mapleader = " ";
     keymaps = [
-      #telescope key maps 
       {
         mode = "n";
-        key = "<leader>tf";
-        action = "<cmd>Telescope find_files<cr>";
+        key = "<leader>nh";
+        action = ":noh<CR>";
+        options = {
+            silent = true;
+            noremap = true;
+            desc = "deactivate search highlights";
+        };
       }
       {
-        mode = "n";
-        key = "<leader>tg";
-        action = "<cmd>Telescope live_grep<cr>";
-      }
-      {
-        mode = "n";
-        key = "<leader>th";
-        action = "<cmd>Telescope help_tags<cr>";
-      }
-      {
-        mode = "n";
-        key = "<leader>tr";
-        action = "<cmd>Telescope oldfiles<cr>";
+        mode = "i";
+        key = "jk";
+        action = "<ESC>";
+        options = {
+            silent = true;
+            noremap = true;
+            desc = "escape from insert mode";
+        };
       }
     ];
   };

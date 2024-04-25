@@ -60,6 +60,10 @@
     userEmail = "chiwonchung98@gmail.com";
   };
 
+  programs.btop = {
+    enable = true;
+  };
+
   programs.alacritty = {
     enable = true;
 

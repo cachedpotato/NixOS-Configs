@@ -45,12 +45,13 @@
         transparent_bg.main = true; #default false
         transparent_bg.sign_column = true;
       };
-      #waybar = {
-      #  enable = false;
-      #  enableCenterBackColors = true;
-      #  enableLeftBackColors = true;
-      #  enableRightBackColors = true;
-      #};
+
+      waybar = {
+        enable = false;
+        enableCenterBackColors = true;
+        enableLeftBackColors = true;
+        enableRightBackColors = true;
+      };
     };
   };
 }

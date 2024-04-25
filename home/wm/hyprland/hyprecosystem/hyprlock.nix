@@ -95,8 +95,8 @@
       monitor =
       text = $TIME
       color = rgba(200, 200, 200, 1.0)
-      font_size = 20
-      font_family = FiraCode Nerd Font Mono
+      font_size = 80
+      font_family = JetBrains Nerd Font Mono
       rotate = 0 # degrees, counter-clockwise
 
       position = 0, 160

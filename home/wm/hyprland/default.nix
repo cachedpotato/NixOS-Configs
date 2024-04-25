@@ -18,7 +18,7 @@
       general = {
         gaps_in = 5; #default
         gaps_out = 7; #default 20
-        border_size = 2; #default 1
+        border_size = 1; #default 1
 
         #colors using nix-colors
         #"col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.palette.base00}ff) 60deg";
@@ -70,14 +70,17 @@
         "$mod SHIFT, 4, movetoworkspace, 4"
         "$mod SHIFT, 5, movetoworkspace, 5"
 
-        #brightness & sound settings
-        ", XF86MonBrightnessDown, exec, brightnessctl set 10-%"
-        ", XF86MonBrightnessUp, exec, brightnessctl set +10%"
-
+        #toggle mute
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        
+      ];
+
+      #brightness & sound settings
+      bindle = [
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5-%"
+        ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-        
       ];
 
       #Mouse bindings
