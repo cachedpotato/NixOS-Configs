@@ -32,7 +32,7 @@
 
       #Misc
       wrap = false;
-      guicursor = "a:block-CursorLineNr";
+      guicursor = "a:block";
       colorcolumn = "100";
       ignorecase = true;
       smartcase = true;
