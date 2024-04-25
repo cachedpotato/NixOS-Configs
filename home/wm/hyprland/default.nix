@@ -92,7 +92,7 @@
       ];
 
       decoration = {
-        rounding = 5;
+        rounding = 7;
         #opacity is better managed using stylix
         #active_opacity = "0.7";
         #inactive_opacity = "0.7";

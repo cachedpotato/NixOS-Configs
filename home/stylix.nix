@@ -3,7 +3,7 @@
   stylix = {
     autoEnable = false;
     image = ../wallpapers/hakurei_reimu_1.jpg; 
-    #base16Scheme = ../themes/base16/equilibrium-light.yaml;
+    base16Scheme = ../themes/base16/equilibrium-light.yaml;
 
     fonts = {
       monospace = {
