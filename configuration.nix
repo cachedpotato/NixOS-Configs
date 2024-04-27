@@ -18,7 +18,7 @@
       enable = true;
       #device = "/dev/sda";
       efiSupport = true;
-      useOSProber = true;
+      useOSProber = false;
       devices = ["nodev"];
   #    if canTouchEfiVariables dont work
   #    efiInstallAsRemovable = true;
@@ -42,7 +42,11 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
+  i18n.supportedLocales = [
+    "en_US.UTF-8/UTF-8"
+    "ko_KR.UTF-8/UTF-8"
+    "ja_JP.UTF-8/UTF-8"
+  ];
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "ko_KR.UTF-8";
     LC_IDENTIFICATION = "ko_KR.UTF-8";
@@ -56,18 +60,32 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  #services.xserver.displayManager.sddm.enable = true;
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "kr, jp";
+      variant = "";
+      options = "grp:win_space_toggle";
+    };
+  };
+
+  # wayland & sddm config
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    enableHidpi = true;
+    package = pkgs.sddm;
+  };
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "kr";
-    xkbVariant = "";
-  };
+  #services.xserver = {
+  #  layout = "kr";
+  #  xkbVariant = "";
+  #};
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -110,6 +128,19 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
+  #hyprland utils
+  #1. dbus
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.dconf ];
+  };
+
+  programs.dconf = {
+    enable = true;
+  };
+  #2. hyprlock settings
+  security.pam.services.hyprlock = {};
+
   #settig zsh as default
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -130,6 +161,7 @@
     curl
     #kitty
     brightnessctl #brightness settings for hyprland
+    obsidian
   ];
   
   #set vim as default editor

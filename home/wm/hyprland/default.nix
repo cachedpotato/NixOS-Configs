@@ -1,4 +1,4 @@
-{config, pkgs, lib, ...}:
+{pkgs, ...}:
 {
   imports = [
     #  nix-colors.homeManagerModules.default
@@ -29,11 +29,14 @@
         "waybar"
         "hypridle"
         "hyprpaper"
+        "hyprlock"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
 
       #keyboard layout
       input = {
-        kb_layout = "kr";
+        kb_layout = "kr, jp";
+        kb_options = "grp:win_space_toggle";
         follow_mouse = 1;
         touchpad = {
           natural_scroll = true;
@@ -77,8 +80,8 @@
 
       #brightness & sound settings
       bindle = [
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5-%"
-        ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 2-%"
+        ", XF86MonBrightnessUp, exec, brightnessctl set +2%"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ];

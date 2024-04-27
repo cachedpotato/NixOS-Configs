@@ -1,4 +1,4 @@
-{config, lib, pkgs, inputs, ...}:
+{ pkgs, inputs, ...}:
 {
   imports = [
     inputs.stylix.homeManagerModules.stylix
@@ -7,7 +7,7 @@
   stylix = {
     autoEnable = false;
     image = ../wallpapers/hakurei_reimu_1.jpg; 
-    base16Scheme = ../themes/base16/da-one-paper.yaml;
+    base16Scheme = ../themes/base16/gruvbox-dark-soft.yaml;
 
     fonts = {
       monospace = {
@@ -47,11 +47,11 @@
       nixvim = {
         enable = true;
         transparent_bg.main = true; #default false
-        transparent_bg.sign_column = true;
+        transparent_bg.sign_column = false;
       };
 
       waybar = {
-        enable = true;
+        enable = false;
         enableCenterBackColors = true;
         enableLeftBackColors = true;
         enableRightBackColors = true;

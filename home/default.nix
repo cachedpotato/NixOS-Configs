@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -7,7 +7,7 @@
   home.homeDirectory = "/home/lowlife";
 
   imports =[
-    ./nixvim.nix
+    ./nixvim
     ./wm
     #./hyprland.nix
     ./shell
@@ -32,6 +32,7 @@
     font-awesome
     #other cool fonts
     jetbrains-mono
+    intel-one-mono
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -46,6 +47,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
   programs.cava = {
     enable = true;
     settings = { 
@@ -58,6 +60,13 @@
     enable = true;
     userName = "cachedpotato";
     userEmail = "chiwonchung98@gmail.com";
+  };
+
+  programs.ruff = { #Python linter, rust powered!
+    enable = true;
+    settings = {
+      line-length = 100;
+    };
   };
 
   programs.btop = {
@@ -85,17 +94,6 @@
     };
   };
 
-  #programs.starship = {
-  #  enable = true;
-
-  #  #custom settings
-  #  settings = {
-  #    add_newline = false;
-  #    aws.disabled = true;
-  #    gcloud.disabled = true;
-  #    line_break.disabled = true;
-  #  };
-  #};
   
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -131,6 +129,7 @@
     EDITOR = "nvim";
     TERM = "alacritty";
     TERMINAL = "alacritty";
+    XDG_SESSION_TYPE = "wayland";
   };
 
   # Let Home Manager install and manage itself.
