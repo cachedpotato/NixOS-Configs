@@ -159,10 +159,23 @@
     lf
     git
     curl
-    #kitty
     brightnessctl #brightness settings for hyprland
     obsidian
+
+    bluez
+    bluez-tools
   ];
+
+  #bluetooth settings
+  services.blueman.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    package = pkgs.bluez;
+    settings = {
+      Policy.AutoEnable = true;
+    };
+  };
   
   #set vim as default editor
   environment.variables.EDITOR = "nvim";

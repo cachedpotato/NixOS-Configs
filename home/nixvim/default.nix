@@ -97,6 +97,8 @@
         };
       };
 
+      luasnip.enable = true;
+
       #cmp-path.enable = true;
       #cmp-cmdline.enable = true;
       #lspkind = {
@@ -165,7 +167,7 @@
 
       #indents
       autoindent = true;
-      #smartindent = true;
+      smartindent = true;
 
       #line number
       number = true;
@@ -177,6 +179,7 @@
       colorcolumn = "100";
       ignorecase = true;
       smartcase = true;
+      conceallevel = 2; #nvim obsidian
       
       #gutter
       signcolumn = "yes";

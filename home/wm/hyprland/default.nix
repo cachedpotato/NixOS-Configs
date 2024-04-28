@@ -10,6 +10,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
+    systemd.variables = ["--all"]; #systemd access to PATH
 
     settings = {
       #leader key settings
@@ -25,12 +26,21 @@
         #"col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ff)";
       };
 
+      monitor = [
+        "eDP-1, 1920x1080, 0x0, 1" #hyprctl showed scaling of 1.5 for some reason
+      ];
+
+      #xwayland = {
+      #  force_zero_scaling = true; #for obsidian
+      #}
+
       exec-once = [
         "waybar"
         "hypridle"
         "hyprpaper"
         "hyprlock"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
 
       #keyboard layout
@@ -47,6 +57,9 @@
       bind = [
         "$mod, Q, exec, alacritty"
         "$mod, F, exec, firefox"
+        "$mod, W, exec, wofi --show drun"
+        "$mod, O, exec, obsidian"
+
         "$mod, C, killactive"
         "$mod, Tab, cyclenext"
         "$mod, M, exit"

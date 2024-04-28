@@ -30,6 +30,15 @@
               desc = "[o]bsidian toggle [c]heckbox";
             };
           };
+
+          gf = {
+            action = "require('obsidian').util.gf_passthrough";
+            opts = {
+              noremap = false;
+              expr = true;
+              buffer = true;
+            };
+          };
         };
       };
     };
