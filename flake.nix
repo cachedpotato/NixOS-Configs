@@ -32,19 +32,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #base16 color scheme for theming
-    #nix-colors.url = "github:misterio77/nix-colors";
-
     #stylix for more centralized color/theme management
     #may change later
     stylix.url = "github:danth/stylix";
     
-    #hyprland
-    #hyprland.url = "github:hyprwm/Hyprland";
-    #hyprland-plugins = {
-    #  url = "github:hyprwm/hyprland-plugins";
-    #  inputs.hyprland.follows = "hyprland";
-    #};
   };
 
   outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: 
@@ -52,7 +43,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
+        #config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
 
@@ -60,7 +51,7 @@
       nixosConfigurations = {
         nixos-mango = lib.nixosSystem {
           inherit system;
-          modules = [./configuration.nix];
+          modules = [./hosts/nixos-mango/default.nix];
         };
       };
 

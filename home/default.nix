@@ -9,43 +9,16 @@
   imports =[
     ./nixvim
     ./wm
-    #./hyprland.nix
     ./shell
-    #./zsh
-    #./bash.nix
     ./stylix.nix
-    #./waybar.nix
-    #nix-colors.homeManagerModules.default
+    ./fonts.nix
   ];
 
-  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     neofetch
     ripgrep
     fzf
     kitty
-
-    (pkgs.nerdfonts.override {fonts = [ "FiraCode" "DroidSansMono"]; })
-    meslo-lgs-nf #for powerlevel10k
-    #fonts for waybar
-    cantarell-fonts
-    font-awesome
-    #other cool fonts
-    jetbrains-mono
-    intel-one-mono
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
 
   programs.cava = {
@@ -110,20 +83,6 @@
     # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/lowlife/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     EDITOR = "nvim";

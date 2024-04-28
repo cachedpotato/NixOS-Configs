@@ -6,7 +6,7 @@
 
   services.hypridle = {
     enable = true;
-    lockCmd = "pidof hyprlock || hyprlock"; #lib.getExe config.programs.hyprlock.package; 
+    lockCmd = lib.getExe config.programs.hyprlock.package; #"pidof hyprlock || hyprlock"; 
     beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
     afterSleepCmd = "hyprctl dispatch dpms on";
     ignoreDbusInhibit = false;
