@@ -48,6 +48,8 @@
           marksman.enable = true; #markdown
           dockerls.enable = true; #docker
           nixd.enable = true; #nix
+          tsserver.enable = true; #TypeScript
+
           #clangd.enable = true; #C/C++
           #rust_analyzer = {
           #  enable = true;

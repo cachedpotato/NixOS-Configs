@@ -12,6 +12,7 @@
     ./shell
     ./stylix.nix
     ./fonts.nix
+    ./ags
   ];
 
   home.packages = with pkgs; [
