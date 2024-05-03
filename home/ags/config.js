@@ -41,6 +41,17 @@ function hyprWorkspaces() {
   })
 };
 
+function clock() {
+  const time = Variable('', {
+    poll: [1000, 'zsh -c "date +%T"'],
+  });
+
+  return Widget.Label({
+    label: time.bind(),
+    class_name: "clock",
+  })
+}
+
 
 function networkStatus() {
 
@@ -93,10 +104,8 @@ function volume() {
   });
 
   const slider = Widget.Slider({
+    hexpand: true,
     vertical: false,
-    value: 10,
-    min: 0,
-    max: 150,
     onChange: ({value}) => audio.speaker.volume = value,
     setup: self => self.hook(audio.speaker, () => {
       self.value = audio.speaker.volume || 0
@@ -110,36 +119,20 @@ function volume() {
       slider,
     ],
     class_name: "volume",
-    css: "min-width: 180px",
+    css: "min-width: 90px",
   })
   
 }
 
 function myBrightness() {
   const slider = Widget.Slider({
+    hexpand: true,
     on_change: self => brightness.screen_value = self.value, 
     value: brightness.bind("screen_value"),
   });
 
-  const icons = {
-    67: "high",
-    34: "medium",
-    1: "low", 
-    0: "Dark"
-  };
-
-  function iconFinder() {
-    const icon = brightness.screen_value == 0 ? 0 :
-      [67, 34, 1, 0].find(
-        threshold => threshold <= brightness.screen_value
-      );
-
-    return `something-${icons[icon]}-brightnessthingy`;
-  }
-
   const icon = Widget.Icon({
-    icon_name: iconFinder(),
-    class_name: "brightnessIcon",
+    icon: "display-brightness-symbolic",
   });
 
   return Widget.Box({
@@ -147,7 +140,7 @@ function myBrightness() {
       icon,
       slider,
     ],
-
+    css: "min-width: 90px",
     class_name: "brightnessBox",
   });
 }
@@ -165,7 +158,7 @@ function startWidgets() {
 function centerWidgets() {
   return Widget.Box({
     children: [
-      clock,
+      clock(),
     ],
     spacing: 8,
     class_name: "centerBox",
@@ -186,24 +179,26 @@ function endWidgets() {
 }
 
 
-function myBar() {
-  return Widget.CenterBox({
-    spacing: 8,
-    startWidget: startWidgets(),
-    centerWidget: centerWidgets(),
-    endWidget: endWidgets(),
-
-    vertical: false,
-  });
+function myBar(monitor=0) {
+  return Widget.Window({
+    name: `monitor${monitor}`,
+    anchor: ["top", "left", "right"],
+    exclusivity: "normal",
+    child: Widget.CenterBox({
+      spacing: 8,
+      startWidget: startWidgets(),
+      centerWidget: centerWidgets(),
+      endWidget: endWidgets(),
+      vertical: false,
+    }),
+  })
 }
 
 ///////////Layout
 //Hyprland Workspaces | Time | Audio Network Backlight(toggle slider) battery notifications
 
 App.config({
-  windows: [myBar()],
-  style: "./style.css",
-  icons: "./assets",
+  windows: [myBar(0)],
 })
 
 
