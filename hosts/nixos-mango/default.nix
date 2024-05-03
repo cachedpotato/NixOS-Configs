@@ -11,6 +11,7 @@
       ../../system/core
       ../../system/hardware
       ../../system/users.nix
+      ../../system/gnome.nix
     ];
 
 

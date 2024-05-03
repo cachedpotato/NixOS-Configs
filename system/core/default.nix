@@ -6,5 +6,6 @@
     ./sddm.nix
     ./security.nix
     ./audio.nix
+    ./power.nix
   ];
 }

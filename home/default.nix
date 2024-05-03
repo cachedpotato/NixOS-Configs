@@ -68,7 +68,21 @@
     };
   };
 
-  
+  gtk = {
+    enable =true;
+
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+    };
+
+    theme = {
+      name = "adw-gtk3-dark";
+
+      package = pkgs.adw-gtk3;
+    };
+  };
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
