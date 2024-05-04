@@ -17,9 +17,9 @@
       "$mod" = "SUPER";
 
       general = {
-        gaps_in = 5; #default
-        gaps_out = 7; #default 20
-        border_size = 1; #default 1
+        gaps_in = 3; #default
+        gaps_out = 5; #default 20
+        border_size = "1.3"; #default 1
 
         #colors using nix-colors
         #"col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.palette.base00}ff) 60deg";
@@ -35,7 +35,7 @@
       #}
 
       exec-once = [
-        "waybar"
+        "ags"
         "hypridle"
         "hyprpaper"
         "hyprlock"
@@ -95,8 +95,8 @@
       bindle = [
         ", XF86MonBrightnessDown, exec, brightnessctl set 2-%"
         ", XF86MonBrightnessUp, exec, brightnessctl set +2%"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"
       ];
 
       #Mouse bindings
