@@ -22,16 +22,22 @@
     hypridle = {
       url = "github:hyprwm/hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.hyprlang.follows = "hyprland/hyprlang";
+      #inputs.systems.follows = "hyprland/systems";
     };
 
     hyprlock = {
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.hyprlang.follows = "hyprland/hyprlang";
+      #inputs.systems.follows = "hyprland/systems";
     };
 
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
       inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.hyprlang.follows = "hyprland/hyprlang";
+      #inputs.systems.follows = "hyprland/systems";
     };
 
     ags.url = "github:Aylur/ags";

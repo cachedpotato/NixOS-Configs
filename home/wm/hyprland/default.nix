@@ -43,7 +43,7 @@
 
       #keyboard layout
       input = {
-        kb_layout = "kr, jp";
+        kb_layout = "kr,jp";
         kb_options = "grp:win_space_toggle";
         follow_mouse = 1;
         touchpad = {

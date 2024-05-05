@@ -84,7 +84,6 @@ function networkStatus() {
 
   const wifiIndicator = () => Widget.Icon({
     icon : network.wifi.bind("iconName"),
-    tooltipText: `ssid: ${network.wifi.bind("ssid")}`
   });
 
 

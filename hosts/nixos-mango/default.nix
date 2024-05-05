@@ -60,7 +60,7 @@
   services.xserver = {
     enable = true;
     xkb = {
-      layout = "kr, jp";
+      layout = "kr,jp";
       variant = "";
       options = "grp:win_space_toggle";
     };
