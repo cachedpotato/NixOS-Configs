@@ -19,7 +19,7 @@
       general = {
         gaps_in = 3; #default
         gaps_out = 5; #default 20
-        border_size = "1.3"; #default 1
+        border_size = 1; #default 1
 
         #colors using nix-colors
         #"col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.palette.base00}ff) 60deg";
@@ -30,10 +30,6 @@
         "eDP-1, 1920x1080, 0x0, 1" #hyprctl showed scaling of 1.5 for some reason
       ];
 
-      #xwayland = {
-      #  force_zero_scaling = true; #for obsidian
-      #}
-
       exec-once = [
         "ags"
         "hypridle"
@@ -42,6 +38,8 @@
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
+
+      workspace = "r[1-5],persistent:true";
 
       #keyboard layout
       input = {

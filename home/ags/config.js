@@ -1,14 +1,21 @@
+const configDir = '/home/lowlife/.flake_configs/home/ags';
 const battery = await Service.import('battery');
 const hyprland = await Service.import('hyprland');
 const network = await Service.import('network')
 const audio = await Service.import('audio');
 import brightness from './brightness.js';
+//why isn't App.configDir working?
 
 
-//widgets can only be assigned as a child in one continer
-//to make a reusable widget, make it a function
-//so that you can just create an instance by calling it
-//
+function nixLogo() {
+  return Widget.Icon({
+    css: 'margin-left: 8px;'
+      + 'background-color: transparent;',
+    class_name: "nixLogo",
+    icon: `${configDir}/assets/NixOSLogo.png`,
+    size: 30,
+  })
+};
 
 function ringBattery() {
   const className = battery.bind("percent").as(
@@ -17,13 +24,19 @@ function ringBattery() {
         p > 15 ? "battery-warning-notCharging" : "battery-critical-notCharging"
   ); 
 
+  const timeLeft = battery.bind("timeRemaining").as(
+      t => `Time Left: ${~~(t/3600)} Hr(s) ${~~((t%3600)/60)} Min(s)`
+  );
+
   return Widget.CircularProgress({
     css: 'font-size: 6px;' //thiccness
       + 'min-width: 30px;'
-      + 'min-height: 30px;'//size = min(min-width, min-height)
-      + 'margin-right: 5px;', //the ring kinda clips at the rightmost part of the screen
+      + 'min-height: 30px;',//size = min(min-width, min-height)
     class_name: className,
     rounded: true,
+    tooltipText: battery.bind("charged").as(
+      ch => ch ? "Fully Charged" : timeLeft
+    ),
     value: battery.bind("percent").as(
       p =>  p > 0 ? p/100 : 0
     ),
@@ -34,13 +47,12 @@ function ringBattery() {
   });
 } 
 
-
 function hyprWorkspaces() {
   const activeId = hyprland.active.workspace.bind("id");
   const workspaces = hyprland.bind("workspaces")
     .as(ws => ws.map(({id}) => Widget.Button({
       //css: "margin: 2px;",
-      on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
+      onClicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
       child: Widget.Label(`${id}`),
       //class_name is used for css
       class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
@@ -48,6 +60,7 @@ function hyprWorkspaces() {
 
   return Widget.Box({
     vertical: false,
+    spacing: 1,
     class_name: "workspaces",
     children: workspaces,
   })
@@ -55,7 +68,7 @@ function hyprWorkspaces() {
 
 function clock() {
   const time = Variable('', {
-    poll: [1000, 'zsh -c "date +%T"'],
+    poll: [1000, ['zsh', '-c', 'date +"%H:%M %D"'], ],
   });
 
   return Widget.Label({
@@ -64,15 +77,14 @@ function clock() {
   })
 }
 
-
 function networkStatus() {
-
   const ethernetIndicator = () => Widget.Icon({
     icon : network.wired.bind("icon_name"),
   });
 
   const wifiIndicator = () => Widget.Icon({
     icon : network.wifi.bind("iconName"),
+    tooltipText: `ssid: ${network.wifi.bind("ssid")}`
   });
 
 
@@ -87,14 +99,10 @@ function networkStatus() {
     shown: network.bind("primary").as(
       p => p || "wifi"
     ),
-
   });
-
 };
 
-
 function volume() {
-
   const icons = {
     101: "overamplified",
     67: "high",
@@ -126,37 +134,10 @@ function volume() {
     value: audio.speaker.bind("volume"),
     child: icon,
   });
-
-  //const slider = Widget.Slider({
-  //  draw_value: false,
-  //  hexpand: true,
-  //  vertical: false,
-  //  onChange: ({value}) => audio.speaker.volume = value,
-  //  setup: self => self.hook(audio.speaker, () => {
-  //    self.value = audio.speaker.volume || 0
-  //  })
-
-  //})
-
-  //return Widget.Box({
-  //  children: [
-  //    icon,
-  //    slider,
-  //  ],
-  //  css: "min-width: 180px",
-  //  class_name: "volume",
-  //})
   
 };
 
 function myBrightness() {
-  //const slider = Widget.Slider({
-  //  draw_value: false,
-  //  hexpand: true,
-  //  on_change: self => brightness.screen_value = self.value, 
-  //  value: brightness.bind("screen_value"),
-  //});
-
   const icon = Widget.Icon({
     icon: "display-brightness-symbolic",
     css: 'font-size: 10px;'
@@ -174,20 +155,52 @@ function myBrightness() {
     ),
     child: icon,
   });
-
-  //return Widget.Box({
-  //  children: [
-  //    icon,
-  //    slider,
-  //  ],
-  //  css: "min-width: 180px;",
-  //  class_name: "brightness",
-  //});
 }
 
+//cmd: command to execute (string)
+//className: class name for css
+//label: text for the button
+function powerMenuItems(cmd, className = "", label) {
+  return Widget.MenuItem({
+    className: className,
+    child: Widget.Label({
+      label: label,
+      xalign: 0,
+      justification: "left",
+    }),
+    onActivate: () => {
+      Utils.execAsync(`zsh -c "${cmd}"`);
+    }
+  })
+};
+
+function powerMenu() {
+   const menu = Widget.Menu({
+    children: [
+      powerMenuItems("hyprlock", "lock", "Lock Screen"),
+      powerMenuItems("poweroff", "shutdown", "Shut Down"),
+      powerMenuItems("reboot", "restart", "Restart"),
+    ],
+  });
+
+  return Widget.MenuBar({
+    setup: self => {
+      self.append(Widget.MenuItem({
+        child: Widget.Icon({
+          icon: "system-shutdown-symbolic",
+        }),
+        submenu: menu,
+      }));
+    },
+  });
+};
+
+///////////////////////////////////Bar Setup/////////////////////////////////////
+//
 function startWidgets() {
   return Widget.Box({
     children: [
+      nixLogo(),
       hyprWorkspaces(),
     ],
     spacing: 8,
@@ -209,16 +222,16 @@ function endWidgets() {
   return Widget.Box({
     hpack: "end",
     children: [
-      networkStatus(),
       myBrightness(),
       volume(),
       ringBattery(),
+      networkStatus(),
+      powerMenu(),
     ],
     spacing: 8,
     class_name: "rightBox",
   }); 
 }
-
 
 function myBar(monitor=0) {
   return Widget.Window({
@@ -237,12 +250,9 @@ function myBar(monitor=0) {
   })
 }
 
-///////////Layout
-//Hyprland Workspaces | Time | Audio Network Backlight(toggle slider) battery notifications
-
 App.config({
   windows: [myBar(0)],
-  style: '/home/lowlife/.flake_configs/home/ags/style.css',
+  style:`${configDir}/style.css`,
 })
 
 

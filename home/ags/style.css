@@ -23,11 +23,14 @@ button {
 /*----Individual Modules---*/
 .workspaces button {
   border-radius: 100%;
+  background-color: #51bcfe;
 }
 
 .workspaces button.focused {
-  background-color:  #b8bb26;
+  background-color:  #a588f6;
 }
+/*WHY DOES THIS MAKE MY BUTTON LARGER OH MY FUCKING GOD*/
+/*background: linear-gradient(135deg, #ccadfe 30%, #51bcfe 60%);*/
 
 .volume {
   color: #83a598;

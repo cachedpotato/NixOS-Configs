@@ -179,6 +179,7 @@
       wrap = false;
       guicursor = "a:block";
       colorcolumn = "100";
+      cursorline = true;
       ignorecase = true;
       smartcase = true;
       conceallevel = 2; #nvim obsidian
