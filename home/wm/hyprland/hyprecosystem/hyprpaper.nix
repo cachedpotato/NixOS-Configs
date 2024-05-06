@@ -7,7 +7,7 @@
   services.hyprpaper = {
     enable = true;
     ipc = true; #false if it's getting slow
-    splash = true;
+    splash = false;
     preloads = [
       "~/.flake_configs/wallpapers/hakurei_reimu_1.jpg"
     ];

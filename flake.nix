@@ -19,32 +19,40 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hypridle = {
-      url = "github:hyprwm/hypridle";
-      inputs.nixpkgs.follows = "nixpkgs";
-      #inputs.hyprlang.follows = "hyprland/hyprlang";
-      #inputs.systems.follows = "hyprland/systems";
-    };
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-      #inputs.hyprlang.follows = "hyprland/hyprlang";
-      #inputs.systems.follows = "hyprland/systems";
-    };
-
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs.nixpkgs.follows = "nixpkgs";
-      #inputs.hyprlang.follows = "hyprland/hyprlang";
-      #inputs.systems.follows = "hyprland/systems";
-    };
-
     ags.url = "github:Aylur/ags";
 
     #stylix for more centralized color/theme management
     #may change later
     stylix.url = "github:danth/stylix";
+
+    ############################---HYPRLAND---############################
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+      inputs.systems.follows = "hyprland/systems";
+    };
+
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+      inputs.systems.follows = "hyprland/systems";
+    };
+
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+      inputs.systems.follows = "hyprland/systems";
+    };
+
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
   };
 
@@ -61,7 +69,9 @@
       nixosConfigurations = {
         nixos-mango = lib.nixosSystem {
           inherit system;
+          specialArgs = {inherit inputs;};
           modules = [./hosts/nixos-mango/default.nix];
+
         };
       };
 

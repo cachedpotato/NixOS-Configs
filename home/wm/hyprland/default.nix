@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, inputs, ...}:
 {
   imports = [
     #  nix-colors.homeManagerModules.default
@@ -7,9 +7,13 @@
 
   #colorScheme = nix-colors.colorSchemes.dracula;
 
+  home.packages = [
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    inputs.hyprland-contrib.packages.${pkgs.system}.scratchpad
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
     systemd.variables = ["--all"]; #systemd access to PATH
 
     settings = {
@@ -34,8 +38,8 @@
         "ags"
         "hypridle"
         "hyprpaper"
-        "hyprlock"
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        #"hyprlock"
+        #"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
 
@@ -57,6 +61,9 @@
         "$mod, F, exec, firefox"
         "$mod, W, exec, wofi --show drun"
         "$mod, O, exec, obsidian"
+        "$mod, G, exec, grimblast" #screenshot utility
+        "$mod, P, exec, scratchpad" #send window to scratchpad
+        "$mod SHIFT, P, exec, scratchpad -g" #retrieve scratchpad window
 
         "$mod, C, killactive"
         "$mod, Tab, cyclenext"

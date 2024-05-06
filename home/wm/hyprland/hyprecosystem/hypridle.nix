@@ -1,41 +1,39 @@
 {pkgs, lib, config,inputs, ...}:
 {
-  #imports = [
-  #  inputs.hypridle.homeManagerModules.default
-  #];
 
   services.hypridle = {
     enable = true;
     settings = {
-      lockCmd = lib.getExe config.programs.hyprlock.package; #"pidof hyprlock || hyprlock"; 
-      beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
-      afterSleepCmd = "hyprctl dispatch dpms on";
-      ignoreDbusInhibit = false;
+      general = {
+        "lock_cmd" = "pidof hyprlock || hyprlock"; #lib.getExe config.programs.hyprlock.package; #"pidof hyprlock || hyprlock"; 
+        "before_sleep_cmd" = "${pkgs.systemd}/bin/loginctl lock-session";
+        "after_sleep_cmd" = "hyprctl dispatch dpms on";
+        "ignore_dbus_limit" = false;
+      };
 
-      listeners = [
+      listener = [
         {
           timeout = 300;
-          onTimeout = "brightnessctl -s set 10";
-          onResume = "brightnessctl -r";
+          "on-timeout" = "brightnessctl -s set 10";
+          "on-resume" = "brightnessctl -r";
         }
 
         {
           timeout = 600;
-          onTimeout = "loginctl lock-session";
+          "on-timeout" = "loginctl lock-session";
         }
 
         {
           timeout = 630;
-          onTimeout = "hyprctl dispatch dpms off";
-          onResume = "hyprctl dispatch dpms on";
+          "on-timeout" = "hyprctl dispatch dpms off";
+          "on-resume" = "hyprctl dispatch dpms on";
         }
 
         {
           timeout = 1800;
-          onTimeout = "systemctl suspend";
+          "on-timeout" = "systemctl suspend";
         }
       ];
-
     };
   };
 }
