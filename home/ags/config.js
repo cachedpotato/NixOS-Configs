@@ -24,19 +24,12 @@ function ringBattery() {
         p > 15 ? "battery-warning-notCharging" : "battery-critical-notCharging"
   ); 
 
-  const timeLeft = battery.bind("timeRemaining").as(
-      t => `Time Left: ${~~(t/3600)} Hr(s) ${~~((t%3600)/60)} Min(s)`
-  );
-
   return Widget.CircularProgress({
     css: 'font-size: 6px;' //thiccness
       + 'min-width: 30px;'
       + 'min-height: 30px;',//size = min(min-width, min-height)
     class_name: className,
     rounded: true,
-    tooltipText: battery.bind("charged").as(
-      ch => ch ? "Fully Charged" : timeLeft
-    ),
     value: battery.bind("percent").as(
       p =>  p > 0 ? p/100 : 0
     ),
