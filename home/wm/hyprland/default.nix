@@ -29,7 +29,7 @@
       };
 
       dwindle = {
-        force-split = 2; #always force new splits to be on the right
+        force_split = 2; #always force new splits to be on the right
       };
 
       monitor = [
