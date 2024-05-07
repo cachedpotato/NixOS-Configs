@@ -6,20 +6,20 @@
 
   stylix = {
     autoEnable = false;
-    image = ../wallpapers/hakurei_reimu_1.jpg; 
+    #image = ../wallpapers/hakurei_reimu_1.jpg; 
     base16Scheme = ../themes/base16/gruvbox-dark-soft.yaml;
 
-    fonts = {
+    fonts = with pkgs; {
       monospace = {
-        package = pkgs.nerdfonts;
+        package = (nerdfonts.override {fonts = ["FiraCode"];});
         name = "FiraCode Nerd Font Mono";
       };
       serif = {
-        package = pkgs.nerdfonts;
+        package = (nerdfonts.override {fonts = ["FiraCode"];});
         name = "FiraCode Nerd Font Mono";
       };
       sansSerif= {
-        package = pkgs.nerdfonts;
+        package = (nerdfonts.override {fonts = ["FiraCode"];});
         name = "FiraCode Nerd Font Mono";
       };
       sizes = {

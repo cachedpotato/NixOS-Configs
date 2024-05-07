@@ -25,9 +25,11 @@
         gaps_out = 5; #default 20
         border_size = 1; #default 1
 
-        #colors using nix-colors
-        #"col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.palette.base00}ff) 60deg";
-        #"col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ff)";
+        layout = "dwindle";
+      };
+
+      dwindle = {
+        force-split = 2; #always force new splits to be on the right
       };
 
       monitor = [
@@ -61,9 +63,16 @@
         "$mod, F, exec, firefox"
         "$mod, W, exec, wofi --show drun"
         "$mod, O, exec, obsidian"
-        "$mod, G, exec, grimblast" #screenshot utility
         "$mod, P, exec, scratchpad" #send window to scratchpad
         "$mod SHIFT, P, exec, scratchpad -g" #retrieve scratchpad window
+
+
+        #grimblast - screenshot utility
+        "$mod, G, exec, grimblast save active" #save current window
+        "$mod SHIFT, G, exec, grimblast save area" #save selected area
+        "$mod ALT, G, exec, grimblast save output" #save current output
+        "$mod CTRL, G, exec, grimblast save screen" #save all outputs
+
 
         "$mod, C, killactive"
         "$mod, Tab, cyclenext"

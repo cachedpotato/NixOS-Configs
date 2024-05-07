@@ -20,7 +20,7 @@ function nixLogo() {
 function ringBattery() {
   const className = battery.bind("percent").as(
     p => p > 30 ? "" : 
-      battery.bind("charging") == true ? "" :
+      battery.bind("charging") === true ? "" :
         p > 15 ? "battery-warning-notCharging" : "battery-critical-notCharging"
   ); 
 

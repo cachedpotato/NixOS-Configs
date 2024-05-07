@@ -4,7 +4,7 @@
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
-    autosuggestion.highlight = "fg=#ff00ff, bg = cyan, bold, underline"; #example
+    #autosuggestion.highlight = "fg=#ff00ff, bg = cyan, bold, underline"; #example
     autocd = true;
     
     history = {
