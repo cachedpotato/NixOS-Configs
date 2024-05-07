@@ -18,7 +18,7 @@ Still, I think (or at least hope) I'm learning a few things everyday, so I hope 
 
 ## Screenshot
 Can you believe this took me 3 whole weeks? Yeah, me neither.
-![Preview](./screenshot/Preview1.png)
+![screenshot](screenshots/Preview1.png)
 Nothing too much going on, I'm using Hyprland as my DE + Ags for my status bar atm. As for the status bar I may add a few more widgets but at the same time I do not find the need to.
 
 ## Issues
