@@ -4,7 +4,8 @@ Hello and Welcome! There isn't a lot to see here but I hope you enjoy your brief
 
 ## Why NixOS?
 I've always wanted to try out Linux ever since Windows 11 became a pain in the butt to manage.
-Do I know anything about Linux? I mean not really. Am I experiencing issues? yes, a bunch actually. Am I having fun despite all this? Yes.
+When I was looking for which distro to use, by complete chance I came across a video about NixOS. Being the pretentious dork that I am, I really liked how different it was from other distros. Also there were genuinely good reasons to use it as well, such as it being highly reproducible and idk how but everything can be configured declaratively? That sounded like magic to me, so I decided to try it out myself, _conveniently forgetting the fact that I do not know Linux in general_. 
+... Safe to say I ran into a lot of problems (still am), mostly stemming from me being an idiot, but I'm having a lot of fun and I think that's what really matters.
 As I've mentioned before, I know next to nothing about linux, so whatever config I'm doing now will be, frankly speaking, bad. Nobody should ever want to use my setup, at least for now.
 Still, I think (or at least hope) I'm learning a few things everyday, so I hope to one day be competent enough to make a decent setup.
 
@@ -20,6 +21,7 @@ Still, I think (or at least hope) I'm learning a few things everyday, so I hope 
 Can you believe this took me 3 whole weeks? Yeah, me neither.
 ![screenshot](screenshots/Preview1.png)
 Nothing too much going on, I'm using Hyprland as my DE + Ags for my status bar atm. As for the status bar I may add a few more widgets but at the same time I do not find the need to.
+Hell, I don't even have floating tiles. I just think of tiling WMs as a glorified version of tmux, however wrong that may be.
 
 ## Issues
 There are currently 3 major Issues with my setup:
