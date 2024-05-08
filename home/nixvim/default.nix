@@ -49,14 +49,14 @@
           dockerls.enable = true; #docker
           nixd.enable = true; #nix
           tsserver.enable = true; #TypeScript
-
-          #clangd.enable = true; #C/C++
-          #rust_analyzer = {
-          #  enable = true;
-          #  installCargo = true;
-          #  installRustc = true;
-          #};
+          rust-analyzer = { #rust
+            enable = true;
+            settings.cargo.features = "all";
+            installCargo = true;
+            installRustc = true;
+          };
           #gopls.enable = true; #go
+          #clangd.enable = true; #C/C++
         };
       };
 
