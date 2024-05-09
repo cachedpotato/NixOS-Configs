@@ -12,5 +12,8 @@
     #other cool fonts
     jetbrains-mono
     intel-one-mono
+
+    #this font kinda fire tho
+    source-code-pro
   ];
 }

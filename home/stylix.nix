@@ -11,16 +11,18 @@
 
     fonts = with pkgs; {
       monospace = {
-        package = (nerdfonts.override {fonts = ["FiraCode"];});
-        name = "FiraCode Nerd Font Mono";
+        package = source-code-pro;
+        name = "Source Code Pro";
       };
       serif = {
-        package = (nerdfonts.override {fonts = ["FiraCode"];});
-        name = "FiraCode Nerd Font Mono";
+        package = source-code-pro;
+        name = "Source Code Pro";
       };
       sansSerif= {
-        package = (nerdfonts.override {fonts = ["FiraCode"];});
-        name = "FiraCode Nerd Font Mono";
+        package = source-code-pro;
+        name = "Source Code Pro";
+        #package = (nerdfonts.override {fonts = ["FiraCode"];});
+        #name = "FiraCode Nerd Font Mono";
       };
       sizes = {
         terminal = 12;

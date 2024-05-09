@@ -1,5 +1,10 @@
 {pkgs, lib, ...}:
 {
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -34,20 +39,7 @@
       enable = true;
     };
 
-    plugins = [
-      #powerlevel 10k related plugins
-      {
-        name = "zsh-powerlevel10k";
-        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/"; 
-        file = "powerlevel10k.zsh-theme";
-      }
-
-      {
-        name = "powerlevel10k-config";
-        src = ./p10k;
-        file = "p10k-rainbow.zsh";
-      }
-    ];
+    plugins = [];
 
     shellAliases = {
       e = "nvim"; #as in {e}dit

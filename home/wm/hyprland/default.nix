@@ -66,6 +66,9 @@
         "$mod, P, exec, scratchpad" #send window to scratchpad
         "$mod SHIFT, P, exec, scratchpad -g" #retrieve scratchpad window
 
+        #change language (PLEASE WORK)
+        "$mod, SPACE, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next"
+
 
         #grimblast - screenshot utility
         "$mod, G, exec, grimblast save active" #save current window
