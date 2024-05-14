@@ -1,18 +1,18 @@
-{pkgs, lib, config, inputs, ...}:
 {
-  imports = [
-    inputs.hyprpaper.homeManagerModules.default
-  ];
-
   services.hyprpaper = {
     enable = true;
-    ipc = true; #false if it's getting slow
-    splash = false;
-    preloads = [
-      "~/.flake_configs/wallpapers/hakurei_reimu_1.jpg"
-    ];
-    wallpapers = [
-      "eDP-1, ~/.flake_configs/wallpapers/hakurei_reimu_1.jpg"
-    ];
+
+    settings = {
+      ipc = true;
+      spash = false;
+
+      preload = [
+        "~/.flake_configs/wallpapers/zelda_totk_wallpaper.png"    
+      ];
+
+      wallpaper = [
+        "eDP-1,~/.flake_configs/wallpapers/zelda_totk_wallpaper.png"    
+      ];
+    };
   };
 }

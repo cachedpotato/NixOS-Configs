@@ -1,6 +1,5 @@
 {pkgs, lib, config,inputs, ...}:
 {
-
   services.hypridle = {
     enable = true;
     settings = {
