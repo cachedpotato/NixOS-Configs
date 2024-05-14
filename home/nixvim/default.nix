@@ -222,10 +222,6 @@
       }
     ];
 
-    extraPlugins = with pkgs.vimPlugins; [
-      plenary-nvim #obsidian
-    ];
-
     extraConfigLua = ''
       local signs = {Error = "󰅙", Warn = "", Hint = "", Info = ""}
       for type, icon in pairs(signs) do

@@ -1,3 +1,4 @@
+{pkgs, ...}:
 {  
   programs.nixvim = {
     plugins.obsidian = {
@@ -108,6 +109,10 @@
           desc = "[o]bsidian collect [l]inks";
         };
       }
+    ];
+
+    extraPlugins = with pkgs.vimPlugins; [
+      plenary-nvim #obsidian
     ];
   };
 }
