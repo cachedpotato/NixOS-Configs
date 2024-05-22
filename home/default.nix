@@ -7,7 +7,8 @@
   home.homeDirectory = "/home/lowlife";
 
   imports =[
-    ./nixvim
+    ./nixvim #testing just neovim + lua configs to see if it's any better
+    #./neovim
     ./wm
     ./shell
     ./stylix.nix

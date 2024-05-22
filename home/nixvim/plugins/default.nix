@@ -1,8 +1,8 @@
 {
   imports = [
-    ./obsidian.nix
+    #./obsidian.nix
     ./gitsigns.nix
-    #./lazy.nix
+    ./lazy.nix
   ];
 
   programs.nixvim.plugins = {

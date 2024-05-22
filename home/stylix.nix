@@ -25,16 +25,16 @@
         #name = "FiraCode Nerd Font Mono";
       };
       sizes = {
-        terminal = 12;
-        applications = 12;
-        popups = 12;
-        desktop = 12;
+        terminal = 16;
+        applications = 16;
+        popups = 16;
+        desktop = 16;
       };
     };
 
     opacity = {
-      terminal = 0.80;
-      applications = 0.80;
+      terminal = 0.90;
+      applications = 0.90;
       popups = 0.50;
       desktop = 0.50;
     };
@@ -59,5 +59,9 @@
         enableRightBackColors = true;
       };
     };
+
+
+
+
   };
 }
