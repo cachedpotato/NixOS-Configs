@@ -7,7 +7,7 @@
   home.homeDirectory = "/home/lowlife";
 
   imports =[
-    ./nixvim #testing just neovim + lua configs to see if it's any better
+    #./nixvim #testing just neovim + lua configs to see if it's any better
     #./neovim
     ./wm
     ./shell
@@ -101,7 +101,6 @@
 
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
     TERM = "alacritty";
     TERMINAL = "alacritty";
     XDG_SESSION_TYPE = "wayland";

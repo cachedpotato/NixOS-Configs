@@ -7,33 +7,38 @@
     enable = true;
     plugins = [
       {
-        pkg = pkgs.vimPLugins.gitsigns-nvim;
+        pkg = pkgs.vimPlugins.gitsigns-nvim;
         dev = true;
         event = ["BufRead"];
       }
+      {
+        pkg = pkgs.vimPlugins.nvim-lspconfig;
+        dev = true;
+        event = ["BufReadPre" "BufNewFile"];
+      }
+      {
+        pkg = pkgs.vimPlugins.indent-blankline-nvim;
+        dev = true;
+        event = ["BufReadPre" "BufNewFile"];
+      }
+      {
+        pkg = pkgs.vimPlugins.nvim-autopairs;
+        dev = true;
+        event = ["InsertEnter"];
+      }
+      {
+        pkg = pkgs.vimPlugins.nvim-cmp;
+        dev = true;
+        event = ["InsertEnter"];
+      }
+      {
+        pkg = pkgs.vimPlugins.nvim-treesitter;
+        dev = true;
+        event = ["BufReadPre" "BufNewFile"];
+      }
       #{
-      #  pkg = nvim-lspconfig;
-      #  dir = "/nix/store/gmzfpq146r13iipky26131zfz64fjm6h-vimplugin-nvim-lspconfig-2024-05-06/lua/lspconfig";
-      #  event = ["BufReadPre" "BufNewFile"];
-      #}
-      #{
-      #  pkg = indent-blankline-nvim;
-      #  event = ["BufReadPre" "BufNewFile"];
-      #}
-      #{
-      #  pkg = nvim-autopairs;
-      #  event = ["InsertEnter"];
-      #}
-      #{
-      #  pkg = nvim-cmp;
-      #  event = ["InsertEnter"];
-      #}
-      #{
-      #  pkg = nvim-treesitter;
-      #  event = ["BufReadPre" "BufNewFile"];
-      #}
-      #{
-      #  pkg = obsidian-nvim;
+      #  pkg = pkgs.vimPlugins.obsidian-nvim;
+      #  dev = true;
       #  event = ["BufReadPre" "BufNewFile"];
       #  ft = "md";
       #}

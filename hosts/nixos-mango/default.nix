@@ -91,7 +91,7 @@
   ];
 
   #set vim as default editor
-  environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = "vim";
   #environment.variables.TERMINAL = "alacritty";
 
   # Some programs need SUID wrappers, can be configured further or are

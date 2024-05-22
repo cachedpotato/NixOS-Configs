@@ -1,4 +1,4 @@
-{ pkgs, inputs, ...}:
+{ lib, pkgs, inputs, ...}:
 {
   imports = [
     inputs.stylix.homeManagerModules.stylix
@@ -25,10 +25,10 @@
         #name = "FiraCode Nerd Font Mono";
       };
       sizes = {
-        terminal = 16;
-        applications = 16;
-        popups = 16;
-        desktop = 16;
+        terminal = 12;
+        applications = 12;
+        popups = 12;
+        desktop = 12;
       };
     };
 
